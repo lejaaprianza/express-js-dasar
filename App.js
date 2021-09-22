@@ -1,8 +1,12 @@
 var express = require("express")
 var app = express()
 
-app.get("/kodepos/:kode([0-9]{5})", function (req, res) {
-  res.send("Kode Pos: " + req.params.kode)
+app.get("/lampungkode", function (req, res) {
+  res.send("method GET dapat diakses")
+})
+
+app.get("*", function (req, res) {
+  res.send("maaf, method GET belum dibuat atau tidak dapat diakses.")
 })
 
 app.listen(4000)
