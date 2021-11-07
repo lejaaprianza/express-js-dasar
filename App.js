@@ -1,8 +1,8 @@
 var express = require("express")
 var app = express()
 
-app.use(function (req, res, next) {
-  console.log("Waktu LampungKode: " + Date.now())
+app.use("/user/:id", function (req, res, next) {
+  res.send(req.method)
   next()
 })
 
