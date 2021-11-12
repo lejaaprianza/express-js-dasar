@@ -1,18 +1,11 @@
 var express = require("express")
 var app = express()
 
-app.get(
-  "/user/:id",
-  function (req, res, next) {
-    if (req.params.id === "0") next("route")
-    else next()
-  },
-  function (req, res, next) {
-    res.send("Halaman ini muncul kalau params tidak sama dengan 0")
-  }
-)
+function logMethod(req, res) {
+  res.send("Tipe Request-nya: " + req.method)
+}
 
-app.get("/user/:id", function (req, res, next) {
-  res.send("Params sama dengan 0")
-})
+app.get("/user/:id", logMethod)
+app.post("/user/:id", logMethod)
+
 app.listen(4000)
